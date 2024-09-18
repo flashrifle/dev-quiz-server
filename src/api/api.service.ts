@@ -2,11 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { OpenAI } from 'openai';
 import { ConfigService } from '@nestjs/config';
 import { OPENAI_API_KEY } from '../common/const/env-config.const';
+import { CreateExamDto } from './dto/create-exam.dto';
 @Injectable()
 export class ApiService {
   constructor(private readonly configService: ConfigService) {}
 
-  async generateAi() {
+  async generateAi(dto: CreateExamDto) {
     const openai = new OpenAI({
       apiKey: this.configService.get<string>(OPENAI_API_KEY),
     });
@@ -28,7 +29,7 @@ export class ApiService {
           content: [
             {
               type: 'text',
-              text: '자바스크립트 초급 문제 1개를 만들거야 답안은 4개야 json 형식으로 ',
+              text: `${dto.lang} ${dto.difficulty} 문제 ${dto.count}개를 만들거야 답안은 4개야 json 형식으로 `,
             },
           ],
         },
@@ -42,7 +43,15 @@ export class ApiService {
         type: 'json_object',
       },
     });
+    console.log('response : ', response.choices);
     return response.choices[0].message.content;
-    // console.log('response : ', response.choices);
+  }
+
+  getQueryTest(dto: CreateExamDto) {
+    const result = {
+      ...dto,
+    };
+    console.log(result);
+    return result;
   }
 }
