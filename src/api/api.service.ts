@@ -29,7 +29,7 @@ export class ApiService {
           content: [
             {
               type: 'text',
-              text: `${dto.lang} ${dto.difficulty} 4지선다로 문제 ${dto.count}개를 만들거야 답안 앞에 숫자를 붙혀줘 json 형식으로 `,
+              text: `언어 : ${dto.lang} 난이도 : ${dto.difficulty} 4지선다로 문제 ${dto.count}개를 만들거야 답안 앞에 숫자를 붙혀줘 json 형식으로 `,
             },
           ],
         },
