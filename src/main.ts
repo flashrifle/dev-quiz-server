@@ -9,7 +9,7 @@ async function bootstrap() {
 
   // cors 설정
   app.enableCors({
-    origin: ['http://localhost:3001'],
+    origin: ['http://localhost:3000'],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     exposedHeaders: ['Authorization'], // * 사용할 헤더 추가.

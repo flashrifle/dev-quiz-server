@@ -12,15 +12,10 @@ import { CreateExamDto } from './dto/create-exam.dto';
 export class ApiController {
   constructor(private readonly apiService: ApiService) {}
 
-  @Post('/test')
+  @Post('/examCreate')
   @UsePipes(new ValidationPipe())
   getApi(@Body() createExamDto: CreateExamDto) {
+    console.log(createExamDto);
     return this.apiService.generateAi(createExamDto);
-  }
-
-  @Post('/test2')
-  @UsePipes(new ValidationPipe())
-  getQueryTest(@Body() createExamDto: CreateExamDto) {
-    return this.apiService.getQueryTest(createExamDto);
   }
 }

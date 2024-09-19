@@ -1,7 +1,18 @@
 import { IsIn, IsNumber, IsString } from 'class-validator';
 
 export class CreateExamDto {
-  @IsIn(['javascript', 'mysql'])
+  @IsIn([
+    'Java',
+    'JavaScript',
+    'Python',
+    'C',
+    'C#',
+    'C++',
+    'SQL',
+    'MySQL',
+    'MS-SQL',
+    'PostgreSQL',
+  ])
   @IsString()
   lang: string;
 
