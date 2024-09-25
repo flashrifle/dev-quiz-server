@@ -2,6 +2,14 @@ import { OPENAI_API_KEY } from '../const/env-config.const';
 import { OpenAI } from 'openai';
 import { CreateExamDto } from '../../api/dto/create-exam.dto';
 
+const examSample = {
+  questionNumber: {
+    question: '문제질문',
+    choices: [1, 2, 3, 4],
+    answer: '정답',
+  },
+};
+
 export const createExam = async (dto: CreateExamDto) => {
   const openai = new OpenAI({
     apiKey: process.env[OPENAI_API_KEY],
@@ -15,7 +23,7 @@ export const createExam = async (dto: CreateExamDto) => {
         content: [
           {
             type: 'text',
-            text: '\b프로그래밍 언어 문제를 생성하는 것 입니다',
+            text: `${examSample} 형식의 프로그래밍 언어 문제를 생성하는 것 입니다 문제 형식 객체구조를 바꿀 수 없고 형식을 무조껀 지켜야합니다.`,
           },
         ],
       },
@@ -24,7 +32,7 @@ export const createExam = async (dto: CreateExamDto) => {
         content: [
           {
             type: 'text',
-            text: `언어 : ${dto.lang} 난이도 : ${dto.difficulty} 4지선다로 문제 ${dto.count}개를 만들거야 답안 앞에 숫자를 붙혀줘 json 형식으로 `,
+            text: `언어 : ${dto.lang} 난이도 : ${dto.difficulty} 4지선다로 문제 ${dto.count}개를 만들거야 답안 앞에 숫자를 붙혀줘 json 형식으로`,
           },
         ],
       },
