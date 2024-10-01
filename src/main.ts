@@ -10,10 +10,8 @@ async function bootstrap() {
 
   if (devStatus === 'prod') {
     httpsOptions = {
-      key: fs.readFileSync('/etc/letsencrypt/live/devquiz.p-e.kr/privkey.pem'),
-      cert: fs.readFileSync(
-        '/etc/letsencrypt/live/devquiz.p-e.kr/fullchain.pem',
-      ),
+      key: fs.readFileSync('./privkey.pem'),
+      cert: fs.readFileSync('./fullchain.pem'),
     };
   }
 
