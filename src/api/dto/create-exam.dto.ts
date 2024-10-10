@@ -12,6 +12,7 @@ export class CreateExamDto {
     'MySQL',
     'MS-SQL',
     'PostgreSQL',
+    'Power BI',
   ])
   @IsString()
   lang: string;
